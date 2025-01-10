@@ -89,7 +89,9 @@ const FormComponent = () => {
     }, [currentUser, location.state?.redirect, navigate, setStatus, socket, status])
     return (
         <div className="flex w-full max-w-[500px] flex-col items-center justify-center gap-4 p-4 sm:w-[500px] sm:p-8">
-            <img src={logo} alt="Logo" className="w-full"/>
+            {/* <img src={logo} alt="Logo" className="w-full"/> */}
+            <h1 className="text-2xl"> Welcome to Code Sync</h1>
+            <span  className="text-sm">your real time code collaborator</span>
             <form onSubmit={joinRoom} className="flex w-full flex-col gap-4">
                 <input
                     type="text"

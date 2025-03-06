@@ -48,7 +48,11 @@ const FormComponent = () => {
 
     const joinRoom = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (status === USER_STATUS.ATTEMPTING_JOIN) return
+        if (status === USER_STATUS.ATTEMPTING_JOIN) {
+            console.log('here')
+            toast('Wait and try again')
+            return;
+        }
         if (!validateForm()) return
         toast.loading("Joining room...")
         setStatus(USER_STATUS.ATTEMPTING_JOIN)

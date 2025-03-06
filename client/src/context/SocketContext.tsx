@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { DrawingData } from "@/types/app"
 import {
     SocketEvent,
@@ -41,13 +42,16 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
     const socket: Socket = useMemo(
         () =>
             io(BACKEND_URL, {
-                reconnectionAttempts: 2,
+                reconnectionAttempts: 5,
+                timeout: 5000,
+                autoConnect: true,
             }),
         [],
-    )
+    );
+    
 console.log("socket",socket)
     const handleError = useCallback(
-        (err: any) => {
+        (err: unknown) => {
             console.log("socket error", err)
             setStatus(USER_STATUS.CONNECTION_FAILED)
             toast.dismiss()
@@ -65,6 +69,7 @@ console.log("socket",socket)
 
     const handleJoiningAccept = useCallback(
         ({ user, users }: { user: User; users: RemoteUser[] }) => {
+            console.log("accept join function ")
             setCurrentUser(user)
             setUsers(users)
             toast.dismiss()

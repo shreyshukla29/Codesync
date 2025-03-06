@@ -37,11 +37,12 @@ function UsersView() {
     }
 
     const leaveRoom = () => {
-        socket.disconnect()
+        socket.emit("leave-room");
         setStatus(USER_STATUS.DISCONNECTED)
-        navigate("/", {
-            replace: true,
-        })
+        sessionStorage.removeItem("redirect")
+        setTimeout(() => {
+            navigate("/", { replace: true }); // Navigate after 500ms
+        }, 500);
     }
 
     return (

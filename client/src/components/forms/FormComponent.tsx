@@ -87,8 +87,8 @@ const FormComponent = () => {
         } else if (status === USER_STATUS.JOINED && isRedirect) {
             sessionStorage.removeItem("redirect")
             setStatus(USER_STATUS.DISCONNECTED)
-            socket.disconnect()
-            socket.connect()
+            socket.emit('leave-room')
+           // socket.connect()
         }
     }, [currentUser, location.state?.redirect, navigate, setStatus, socket, status])
     return (

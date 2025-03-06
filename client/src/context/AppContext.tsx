@@ -29,7 +29,7 @@ function AppContextProvider({ children }: { children: ReactNode }) {
         ACTIVITY_STATE.CODING,
     )
     const [drawingData, setDrawingData] = useState<DrawingData>(null)
-
+console.log(status)
     return (
         <AppContext.Provider
             value={{

@@ -275,7 +275,7 @@ app.get("/", (req: Request, res: Response) => {
 app.get('/ping',(req,res)=>{
 
   console.log('uptime robot');
-  return res.status(201);
+  return res.status(201).json({message:"Ping"});
 })
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

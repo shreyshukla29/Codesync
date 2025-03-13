@@ -272,6 +272,11 @@ app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
+app.get('/ping',(req,res)=>{
+
+  console.log('uptime robot');
+  return res.status(201);
+})
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
